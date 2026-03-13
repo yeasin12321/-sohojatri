@@ -10,8 +10,9 @@
 
     <style>
         :root {
-            --primary-blue: #0077b6; /* আকাশ ও স্বচ্ছ চিন্তার প্রতীক */
-            --primary-green: #2a9134; /* প্রকৃতি ও তারুণ্যের প্রতীক */
+            --primary-blue: #0077b6;
+            --primary-green: #2a9134;
+            --notice-accent: #e63946; /* বিজ্ঞপ্তির জন্য লালচে রঙ */
             --light-bg: #f8f9fa;
             --white: #ffffff;
             --transition: all 0.3s ease;
@@ -122,6 +123,13 @@
 
         .card i { font-size: 45px; color: var(--primary-green); margin-bottom: 20px; }
 
+        /* Notice Specific Style */
+        #notice .card {
+            border-left: 5px solid var(--notice-accent);
+            text-align: left;
+        }
+        #notice .card i { color: var(--notice-accent); }
+
         /* Team Section */
         .team-card img {
             width: 120px;
@@ -160,6 +168,7 @@
         <div class="logo">সহযাত্রী</div>
         <ul class="nav-links">
             <li><a href="#home">হোম</a></li>
+            <li><a href="#notice">বিজ্ঞপ্তি</a></li>
             <li><a href="#vision">লক্ষ্য</a></li>
             <li><a href="#plan">পরিকল্পনা</a></li>
             <li><a href="#contribution">অবদান</a></li>
@@ -172,6 +181,11 @@
         <h1>সহযাত্রী</h1>
         <p>"একটি সুন্দর শৈশবই বদলে দেবে আগামীর পৃথিবী"</p>
         <p style="font-size: 1rem; margin-top: 10px;">A beautiful childhood will change the world of tomorrow.</p>
+    </section>
+
+    <section id="notice" class="section bg-light">
+        <h2 class="section-title">সর্বশেষ বিজ্ঞপ্তি</h2>
+        <div id="notice-data" class="grid-container"></div>
     </section>
 
     <section id="vision" class="section">
@@ -204,7 +218,6 @@
     </footer>
 
     <script>
-        // আপনার SheetDB API URL এখানে বসান
         const API_URL = 'https://sheetdb.io/api/v1/olrk5ma2200zy'; 
 
         async function loadSheetData() {
@@ -212,6 +225,8 @@
                 const response = await fetch(API_URL);
                 const data = await response.json();
 
+                // ডেটা রেন্ডার করা
+                renderGeneral(data, 'Notice', 'notice-data');
                 renderGeneral(data, 'Vision', 'vision-data');
                 renderGeneral(data, 'Plan', 'plan-data');
                 renderGeneral(data, 'Contribution', 'contribution-data');
@@ -220,15 +235,24 @@
 
             } catch (error) {
                 console.error("ডেটা লোড করা যাচ্ছে না:", error);
+                document.querySelectorAll('.grid-container').forEach(el => {
+                    el.innerHTML = '<p>ডেটা লোড হতে সমস্যা হচ্ছে। দয়া করে পরে চেষ্টা করুন।</p>';
+                });
             }
         }
 
         function renderGeneral(data, category, elementId) {
             const container = document.getElementById(elementId);
             const filtered = data.filter(item => item.Category === category);
+            
+            if(filtered.length === 0) {
+                container.innerHTML = '<p>এই মুহূর্তে কোনো তথ্য নেই।</p>';
+                return;
+            }
+
             container.innerHTML = filtered.map(item => `
                 <div class="card">
-                    <i class="${item.Icon || 'fas fa-star'}"></i>
+                    <i class="${item.Icon || 'fas fa-info-circle'}"></i>
                     <h3>${item.Title}</h3>
                     <p>${item.Description}</p>
                 </div>
