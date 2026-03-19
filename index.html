@@ -12,75 +12,24 @@
         :root {
             --primary-blue: #0077b6;
             --primary-green: #2a9134;
-            --notice-accent: #e63946; /* বিজ্ঞপ্তির জন্য লালচে রঙ */
+            --notice-accent: #e63946;
             --light-bg: #f8f9fa;
             --white: #ffffff;
             --transition: all 0.3s ease;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Hind Siliguri', sans-serif;
-        }
-
-        body {
-            line-height: 1.6;
-            color: #333;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Hind Siliguri', sans-serif; }
+        body { line-height: 1.6; color: #333; scroll-behavior: smooth; }
 
         /* Navigation */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 8%;
-            background: var(--white);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-blue);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li a {
-            text-decoration: none;
-            color: #444;
-            margin-left: 20px;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: var(--white); box-shadow: 0 2px 15px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .logo { font-size: 24px; font-weight: 700; color: var(--primary-blue); }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li a { text-decoration: none; color: #444; margin-left: 20px; font-weight: 600; transition: var(--transition); }
         .nav-links li a:hover { color: var(--primary-green); }
 
         /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(45deg, rgba(0,119,182,0.8), rgba(42,145,52,0.8)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 20px;
-        }
-
+        .hero { height: 100vh; background: linear-gradient(45deg, rgba(0,119,182,0.8), rgba(42,145,52,0.8)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1470&q=80'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--white); padding: 0 20px; }
         .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
         .hero p { font-size: 1.4rem; font-style: italic; }
 
@@ -88,78 +37,40 @@
         .section { padding: 80px 8%; text-align: center; }
         .bg-light { background: var(--light-bg); }
         .section-title { font-size: 2.2rem; margin-bottom: 40px; position: relative; padding-bottom: 10px; }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 4px;
-            background: var(--primary-green);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+        .section-title::after { content: ''; position: absolute; width: 60px; height: 4px; background: var(--primary-green); bottom: 0; left: 50%; transform: translateX(-50%); }
 
-        /* Grid Container */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: var(--transition);
-            border-bottom: 4px solid transparent;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-bottom-color: var(--primary-blue);
-        }
-
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 20px; }
+        .card { background: var(--white); padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: var(--transition); border-bottom: 4px solid transparent; }
+        .card:hover { transform: translateY(-10px); border-bottom-color: var(--primary-blue); }
         .card i { font-size: 45px; color: var(--primary-green); margin-bottom: 20px; }
 
         /* Notice Specific Style */
-        #notice .card {
-            border-left: 5px solid var(--notice-accent);
-            text-align: left;
-        }
+        #notice .card { border-left: 5px solid var(--notice-accent); text-align: left; }
         #notice .card i { color: var(--notice-accent); }
 
         /* Team Section */
-        .team-card img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border: 4px solid var(--primary-blue);
-        }
-
+        .team-card { cursor: pointer; }
+        .team-card img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid var(--primary-blue); }
         .role { color: var(--primary-green); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 10px; display: block; }
 
-        /* Social Section */
-        .social-card { text-decoration: none; color: inherit; display: block; }
+        /* Modal (Profile Detail) */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); overflow-y: auto; }
+        .modal-content { background: #fff; margin: 50px auto; padding: 30px; width: 90%; max-width: 500px; border-radius: 20px; text-align: center; position: relative; animation: slideIn 0.3s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        .close { position: absolute; right: 20px; top: 15px; font-size: 30px; cursor: pointer; color: #666; transition: 0.2s; }
+        .close:hover { color: var(--notice-accent); }
+        .modal-img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 5px solid var(--primary-green); margin-bottom: 20px; }
+        .modal-bio { text-align: left; background: #f0f4f8; padding: 20px; border-radius: 12px; margin-top: 20px; font-size: 1rem; color: #444; }
+        .contact-links { margin-top: 25px; display: flex; justify-content: center; gap: 20px; }
+        .contact-links a { font-size: 28px; transition: var(--transition); }
+        .contact-links a:hover { transform: scale(1.2); }
+        .fa-whatsapp { color: #25D366; }
+        .fa-envelope { color: #EA4335; }
         .fa-facebook { color: #1877F2; }
-        .fa-youtube { color: #FF0000; }
-        .fa-instagram { color: #E4405F; }
 
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: var(--white);
-            padding: 40px 8%;
-            text-align: center;
-        }
+        footer { background: #1a1a1a; color: var(--white); padding: 40px 8%; text-align: center; }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2.5rem; }
-        }
+        @media (max-width: 768px) { .nav-links { display: none; } .hero h1 { font-size: 2.5rem; } }
     </style>
 </head>
 <body>
@@ -205,6 +116,7 @@
 
     <section id="about" class="section bg-light">
         <h2 class="section-title">আমাদের টিম ও কর্মপরিকল্পনা</h2>
+        <p style="margin-bottom: 25px;">প্রোফাইল সম্পর্কে বিস্তারিত জানতে ছবিতে ক্লিক করুন</p>
         <div id="team-data" class="grid-container"></div>
     </section>
 
@@ -213,30 +125,48 @@
         <div id="social-data" class="grid-container"></div>
     </section>
 
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImg" class="modal-img" src="" alt="">
+            <h2 id="modalName"></h2>
+            <span id="modalRole" class="role"></span>
+            <div id="modalBio" class="modal-bio"></div>
+            <div class="contact-links">
+                <a id="modalFB" href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a id="modalWA" href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a id="modalMail" href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; ২০২৬ সহযাত্রী - সাতক্ষীরা। আগামীর পথে আপনার সাথে।</p>
     </footer>
 
     <script>
         const API_URL = 'https://sheetdb.io/api/v1/olrk5ma2200zy'; 
+        let fullTeamData = [];
 
         async function loadSheetData() {
             try {
                 const response = await fetch(API_URL);
                 const data = await response.json();
 
-                // ডেটা রেন্ডার করা
                 renderGeneral(data, 'Notice', 'notice-data');
                 renderGeneral(data, 'Vision', 'vision-data');
                 renderGeneral(data, 'Plan', 'plan-data');
                 renderGeneral(data, 'Contribution', 'contribution-data');
-                renderTeam(data);
+                
+                fullTeamData = data.filter(item => item.Category === 'Team');
+                renderTeam(fullTeamData);
+                
                 renderSocial(data);
 
             } catch (error) {
                 console.error("ডেটা লোড করা যাচ্ছে না:", error);
                 document.querySelectorAll('.grid-container').forEach(el => {
-                    el.innerHTML = '<p>ডেটা লোড হতে সমস্যা হচ্ছে। দয়া করে পরে চেষ্টা করুন।</p>';
+                    el.innerHTML = '<p>সার্ভার থেকে তথ্য পাওয়া যাচ্ছে না।</p>';
                 });
             }
         }
@@ -244,12 +174,10 @@
         function renderGeneral(data, category, elementId) {
             const container = document.getElementById(elementId);
             const filtered = data.filter(item => item.Category === category);
-            
             if(filtered.length === 0) {
                 container.innerHTML = '<p>এই মুহূর্তে কোনো তথ্য নেই।</p>';
                 return;
             }
-
             container.innerHTML = filtered.map(item => `
                 <div class="card">
                     <i class="${item.Icon || 'fas fa-info-circle'}"></i>
@@ -259,18 +187,14 @@
             `).join('');
         }
 
-        function renderTeam(data) {
+        function renderTeam(team) {
             const container = document.getElementById('team-data');
-            const team = data.filter(item => item.Category === 'Team');
-            container.innerHTML = team.map(member => `
-                <div class="card team-card">
+            container.innerHTML = team.map((member, index) => `
+                <div class="card team-card" onclick="openProfile(${index})">
                     <img src="${member.Image || 'https://via.placeholder.com/150'}" alt="${member.Name}">
                     <h3>${member.Name}</h3>
                     <span class="role">${member.Role}</span>
                     <p>${member.Work}</p>
-                    <div style="margin-top:15px;">
-                        <a href="${member.FB}" target="_blank" style="color:var(--primary-blue);"><i class="fab fa-facebook fa-lg"></i></a>
-                    </div>
                 </div>
             `).join('');
         }
@@ -279,14 +203,44 @@
             const container = document.getElementById('social-data');
             const socials = data.filter(item => item.Category === 'Social');
             container.innerHTML = socials.map(item => `
-                <a href="${item.FB}" target="_blank" class="social-card">
+                <a href="${item.FB}" target="_blank" style="text-decoration: none; color: inherit;">
                     <div class="card">
                         <i class="${item.Icon}"></i>
                         <h3>${item.Title}</h3>
-                        <p>আমাদের ${item.Title} এর সাথে যুক্ত থাকুন।</p>
                     </div>
                 </a>
             `).join('');
+        }
+
+        function openProfile(index) {
+            const member = fullTeamData[index];
+            document.getElementById('modalImg').src = member.Image || 'https://via.placeholder.com/150';
+            document.getElementById('modalName').innerText = member.Name;
+            document.getElementById('modalRole').innerText = member.Role;
+            // এক্সেলে 'Details' কলামে যা লিখবে তা এখানে আসবে
+            document.getElementById('modalBio').innerText = member.Details || member.Work || "বিস্তারিত তথ্য শীঘ্রই যুক্ত করা হবে।";
+            
+            // Social Links setup
+            document.getElementById('modalFB').href = member.FB || "#";
+            document.getElementById('modalFB').style.display = member.FB ? "inline-block" : "none";
+            
+            document.getElementById('modalWA').href = member.Whatsapp ? `https://wa.me/${member.Whatsapp}` : "#";
+            document.getElementById('modalWA').style.display = member.Whatsapp ? "inline-block" : "none";
+            
+            document.getElementById('modalMail').href = member.Email ? `mailto:${member.Email}` : "#";
+            document.getElementById('modalMail').style.display = member.Email ? "inline-block" : "none";
+
+            document.getElementById('profileModal').style.display = "block";
+            document.body.style.overflow = "hidden"; // স্ক্রল বন্ধ করবে
+        }
+
+        function closeModal() {
+            document.getElementById('profileModal').style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('profileModal')) closeModal();
         }
 
         window.onload = loadSheetData;
